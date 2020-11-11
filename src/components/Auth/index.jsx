@@ -1,7 +1,5 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import Switch from 'react-bootstrap/esm/Switch';
-import { Route, useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import SignupPage from '../../pages/SignupPage';
 import AuthMenu from '../AuthMenu';
 
