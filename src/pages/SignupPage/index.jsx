@@ -6,8 +6,14 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import './sign-up-page.scss';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { signupAction } from '../../actions/user.action';
+import { useHistory } from 'react-router-dom';
 
 function SignupPage() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const schema = yup.object().shape({
     name: yup.string()
       .required('Please enter ur name!'),
@@ -25,7 +31,7 @@ function SignupPage() {
   });
 
   const handleSignUp = ({ name, email, password }) => {
-    console.log({ name, email, password });
+    dispatch(signupAction(email, password, name, history.push));
   }
 
   return (
