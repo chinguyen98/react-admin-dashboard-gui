@@ -13,11 +13,9 @@ function Auth() {
   return (
     <div className="auth">
       <AuthMenu />
-      <Container>
-        <Switch>
-          <Route path={`${url}/sign-up`} component={SignupPage} />
-        </Switch>
-      </Container>
+      <Switch>
+        <Route path={`${url}/sign-up`} component={SignupPage} />
+      </Switch>
     </div>
   )
 }
