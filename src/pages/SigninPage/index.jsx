@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import './sign-in-page.scss';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSigninAction, userSignupAction } from '../../actions/user.action';
+import { userSigninAction } from '../../actions/user.action';
 import { useHistory } from 'react-router-dom';
 
 function SigninPage() {

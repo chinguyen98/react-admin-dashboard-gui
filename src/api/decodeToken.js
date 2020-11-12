@@ -1,8 +1,8 @@
 import * as jwt from 'jsonwebtoken'
 
 const decodeToken = (token) => {
-  const { name } = jwt.decode(token);
-  return { name };
+  const data = jwt.decode(token);
+  return data;
 }
 
 export default decodeToken;
