@@ -10,15 +10,14 @@ import Dashboard from '../Dashboard';
 
 import './main-page.scss';
 import 'react-pro-sidebar/dist/css/styles.css';
-import TestPage from '../TestPage';
 
 function MainPage() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarClose, setIsSidebarClose] = useState(false);
   const { url } = useRouteMatch();
 
   return (
     <div className="main-page d-flex">
-      <ProSidebar>
+      <ProSidebar collapsed={isSidebarClose}>
         <SidebarHeader>
           <Menu>
             <MenuItem className="font-weight-bold">react-admin-dashboard</MenuItem>
@@ -36,7 +35,9 @@ function MainPage() {
         </SidebarFooter>
       </ProSidebar>
       <div className="main-page__contentArea">
-        <MainMenu />
+        <MainMenu
+          handleSidebarClick={() => { setIsSidebarClose(!isSidebarClose) }}
+        />
         <Switch>
           <AuthenticatedRoute exact path={`${url}/dashboard`} component={Dashboard} />
         </Switch>
