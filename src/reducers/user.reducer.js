@@ -10,6 +10,14 @@ const initState = {
 
 const userReducer = (state = initState, action) => {
   switch (action.type) {
+    case userActionTypes.SET_USER: {
+      const { name } = action.payload;
+      return {
+        ...state,
+        name,
+        isLogged: true,
+      }
+    }
     case userActionTypes.SET_LOADING: {
       const { isLoading } = action.payload;
       return {
