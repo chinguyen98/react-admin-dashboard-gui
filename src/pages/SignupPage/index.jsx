@@ -1,18 +1,20 @@
 import React from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import FormElement from '../../components/FormElement';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import './sign-up-page.scss';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { signupAction } from '../../actions/user.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { userSignupAction } from '../../actions/user.action';
 import { useHistory } from 'react-router-dom';
 
 function SignupPage() {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const { isLoading, errorMessage } = useSelector(state => state.user);
 
   const schema = yup.object().shape({
     name: yup.string()
@@ -31,7 +33,7 @@ function SignupPage() {
   });
 
   const handleSignUp = ({ name, email, password }) => {
-    dispatch(signupAction(email, password, name, history.push));
+    dispatch(userSignupAction(email, password, name, history.push));
   }
 
   return (
@@ -43,6 +45,9 @@ function SignupPage() {
             className="sign-up-page__form p-5"
           >
             <p className="text-center font-weight-bold">Get started with React-Admin-Dashboard!</p>
+            {
+              errorMessage && <Alert variant="danger">{errorMessage}</Alert>
+            }
             <FormElement
               name="name"
               label="Your name:"
@@ -76,7 +81,14 @@ function SignupPage() {
               innerRef={register}
               errorMessage={errors.confirmPassword?.message}
             />
-            <Button type="submit" variant="primary" block>Sign Up</Button>
+            <Button
+              type="submit"
+              variant={isLoading ? 'dark' : 'primary'}
+              block
+              disabled={isLoading}
+            >
+              Sign Up
+            </Button>
           </Form>
         </Col>
         <Col md={4}>
