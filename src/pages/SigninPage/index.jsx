@@ -60,6 +60,7 @@ function SigninPage() {
                 placeholder="Enter your email here!"
                 innerRef={register}
                 errorMessage={errors.email?.message}
+                value="dacchi6761@gmail.com"
               />
               <FormElement
                 name="password"
@@ -68,6 +69,7 @@ function SigninPage() {
                 placeholder="Enter your password here!"
                 innerRef={register}
                 errorMessage={errors.password?.message}
+                value="123"
               />
               <Button
                 type="submit"

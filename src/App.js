@@ -5,7 +5,8 @@ import { userSetUserAction } from './actions/user.action';
 import decodeToken from './api/decodeToken';
 import Auth from './components/Auth';
 import AuthenticatedRoute from './components/AuthenticatedRoute';
-import HomePage from './pages/HomePage';
+import MainPage from './pages/MainPage';
+import NoMatchPage from './pages/NoMatchPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -24,12 +25,13 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <AuthenticatedRoute exact path="/" component={HomePage} />
+        <AuthenticatedRoute path="/home" component={MainPage} />
         <Route path="/auth" >
           {
-            !isLogged ? <Auth /> : <Redirect exact to="/" />
+            !isLogged ? <Auth /> : <Redirect exact to="/home/dashboard" />
           }
         </Route>
+        <Route path="*" component={NoMatchPage} />
       </Switch>
     </BrowserRouter>
   );

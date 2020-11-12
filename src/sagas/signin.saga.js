@@ -27,7 +27,7 @@ function* signinFlow() {
       yield apply(localStorage, localStorage.setItem, ['token', token]);
       yield put(userSetLoadingAction(false));
       yield put(userSetSuccessMessageAction('Sign in successfully!'));
-      yield call(redirectCallback, '/');
+      yield call(redirectCallback, '/home/dashboard');
     }
   }
 }
