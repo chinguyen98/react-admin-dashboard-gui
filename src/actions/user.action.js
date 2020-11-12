@@ -49,3 +49,12 @@ export const userSetErrorMessageAction = (errorMessage) => {
     }
   }
 }
+
+export const userSetSuccessMessageAction = (successMessage) => {
+  return {
+    type: userActionTypes.SET_SUCCESS_MESSAGE,
+    payload: {
+      successMessage,
+    }
+  }
+}

@@ -14,7 +14,7 @@ function SigninPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { isLoading, errorMessage } = useSelector(state => state.user);
+  const { isLoading, errorMessage, successMessage } = useSelector(state => state.user);
 
   const schema = yup.object().shape({
     email: yup.string()
@@ -27,7 +27,7 @@ function SigninPage() {
     resolver: yupResolver(schema),
   });
 
-  const handleSignUp = ({ email, password }) => {
+  const handleSignIn = ({ email, password }) => {
     dispatch(userSigninAction(email, password, history.push));
   }
 
@@ -36,12 +36,15 @@ function SigninPage() {
       <Row>
         <Col xs={12} md={8}>
           <Form
-            onSubmit={handleSubmit(handleSignUp)}
+            onSubmit={handleSubmit(handleSignIn)}
             className="sign-in-page__form p-5"
           >
             <p className="text-center font-weight-bold">Get started with React-Admin-Dashboard!</p>
             {
               errorMessage && <Alert variant="danger">{errorMessage}</Alert>
+            }
+            {
+              successMessage && <Alert variant="success">{successMessage}</Alert>
             }
             <FormElement
               name="email"

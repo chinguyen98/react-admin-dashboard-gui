@@ -30,6 +30,15 @@ const userReducer = (state = initState, action) => {
       return {
         ...state,
         errorMessage,
+        successMessage: null,
+      }
+    }
+    case userActionTypes.SET_SUCCESS_MESSAGE: {
+      const { successMessage } = action.payload;
+      return {
+        ...state,
+        successMessage,
+        errorMessage: null,
       }
     }
     default: {
