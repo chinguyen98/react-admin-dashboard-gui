@@ -12,7 +12,7 @@ import './main-page.scss';
 import 'react-pro-sidebar/dist/css/styles.css';
 
 function MainPage() {
-  const [isSidebarClose, setIsSidebarClose] = useState(false);
+  const [isSidebarClose, setIsSidebarClose] = useState(true);
   const { url } = useRouteMatch();
 
   return (
