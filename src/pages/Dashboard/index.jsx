@@ -7,10 +7,21 @@ import 'chartjs-plugin-datalabels';
 
 import res_imgone from '../../assets/images/res_img1.png';
 import res_imgtwo from '../../assets/images/res_img2.jpg';
+import { getAllUsersApi } from '../../api/user.api';
 
 function Dashboard() {
   const isDesktopOrLaptop = screenMedia.desktopOrLaptop;
   const isMobileOrTablet = screenMedia.tabletOrMobile;
+
+  const getAllsUsersFun = async () => {
+    const user = await getAllUsersApi();
+    return user;
+  }
+
+  useEffect(async () => {
+    const test = await getAllsUsersFun();
+    console.log(test);
+  }, []);
 
   return (
     <div className="dashboard pt-3">

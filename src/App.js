@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Router, Switch } from 'react-router-dom';
 import { userSetUserAction } from './actions/user.action';
 import decodeToken from './api/decodeToken';
 import Auth from './components/Auth';
